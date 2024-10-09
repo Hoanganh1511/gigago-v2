@@ -8,11 +8,13 @@ const Cart = () => {
       <div className='grid grid-cols-12'>
         <div className='col-span-12'>
           <div className='py-[40px]'>
-            <ProgressTracker currentStep={2} />
+            <ProgressTracker currentStep={1} />
           </div>
         </div>
         <div className='col-span-12'>
-          <h1 className='text-[40px] font-semibold text-center'>My Cart</h1>
+          <h1 className='text-[40px] font-semibold text-center mt-[20px]'>
+            My Cart
+          </h1>
           <div className='py-[30px]'>
             <Suspense fallback={<CartSkeleton />}>
               <CartSection />
@@ -41,7 +43,8 @@ function CartSkeleton() {
         </div>
       </div>
       <div className='col-span-4'>
-        <Skeleton className='h-[261px] w-full rounded-xl' />
+        <Skeleton className='h-[261px] w-full rounded-xl mb-[40px] ' />
+        <Skeleton className='h-[56px] w-full rounded-[100px]' />
       </div>
     </section>
   )

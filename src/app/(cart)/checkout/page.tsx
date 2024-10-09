@@ -11,7 +11,9 @@ const CheckoutPage = () => {
           </div>
         </div>
         <div className='col-span-12'>
-          <h1 className='text-[40px] font-semibold text-center'>Checkout</h1>
+          <h1 className='text-[40px] font-semibold text-center  mt-[20px]'>
+            Checkout
+          </h1>
           <div className='py-[30px]'>
             <CheckoutSection />
           </div>
