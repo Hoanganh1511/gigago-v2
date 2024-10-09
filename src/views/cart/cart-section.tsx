@@ -62,7 +62,7 @@ const CartSection = () => {
               <span className='text-[14px]'>$19.40</span>
             </div>
             <div className='flex justify-between items-center'>
-              <span className='text-[20px] font-semibold'>Sub total</span>
+              <span className='text-[20px] font-semibold'>Total total</span>
               <span className='text-[20px] font-semibold'>$19.40</span>
             </div>
           </>
@@ -77,8 +77,19 @@ const CartSection = () => {
             Proceed To Checkout
           </Button>
         </div>
-        <div className='fixed bottom-0 left-0 w-full h-fit'>
-          fixed bottom-0 left-0 md:relative
+        <div className='block md:hidden fixed bottom-0 left-0 bg-white w-full h-fit px-[15px] py-[20px] border-t-[1px] border-gray-100'>
+          <div className='flex justify-between items-center mb-[16px]'>
+            <span className='text-[16px] font-normal'>Total total</span>
+            <span className='text-[16px] font-normal'>$19.40</span>
+          </div>
+          <Button
+            disabled={isLoading}
+            className={` w-full bg-primary text-white py-[16px] font-medium rounded-[100px] hover:shadow-[inset_0_0_0_100px_rgba(0,_0,_0,_.2)]
+              disabled:cursor-wait disabled:pointer-events-none disabled:opacity-[0.6]
+              `}
+          >
+            Proceed To Checkout
+          </Button>
         </div>
       </div>
     </div>
