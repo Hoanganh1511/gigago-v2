@@ -40,7 +40,7 @@ const ViewCartNavigation = () => {
           </div>
         </DrawerTrigger>
         <DrawerContent className='h-dvh md:h-screen w-[300px] md:w-[500px] fixed top-0 right-0 px-4'>
-          <DrawerHeader className='flex items-center justify-between px-[30px] py-[25px] border-b-[1px] border-gray-100'>
+          <DrawerHeader className='flex items-center justify-between  md:py-[25px] border-b-[1px] border-gray-100'>
             <DrawerTitle className='text-[24px]'>My cart</DrawerTitle>
             <div
               onClick={onCartClose}
@@ -49,7 +49,7 @@ const ViewCartNavigation = () => {
               <X className='size-[24px]' />
             </div>
           </DrawerHeader>
-          <div className='flex-1 max-h-full overflow-y-scroll scrollbar p-4 flex flex-col gap-y-[16px]'>
+          <div className='flex-1 max-h-full overflow-y-scroll scrollbar py-2 md:p-4 flex flex-col gap-y-[16px]'>
             <CartItemDrawer onProductClick={() => onCartClose()} />
             <CartItemDrawer onProductClick={() => onCartClose()} />
             <CartItemDrawer onProductClick={() => onCartClose()} />

@@ -14,11 +14,11 @@ const CartItemDrawer = (props: CartItemDrawerProps) => {
   return (
     <li
       className={cn(
-        'flex items-stretch p-[24px] border-[2px] border-gray-100 rounded-[16px]',
+        'flex flex-col md:flex-row items-stretch p-[20px] md:p-[24px] border-[2px] border-gray-100 rounded-[16px]',
         props.className,
       )}
     >
-      <div className='size-[48px] rounded-full border-[1px] overflow-hidden mr-3'>
+      <div className='size-[48px] rounded-full border-[1px] overflow-hidden'>
         <Image
           src='/assets/images/vn.webp'
           width={48}
@@ -27,7 +27,7 @@ const CartItemDrawer = (props: CartItemDrawerProps) => {
           className=''
         />
       </div>
-      <div className='flex-1 ml-[24px]'>
+      <div className='flex-1 ml-0 mt-2 md:mt-0 md:ml-[24px]'>
         <Link
           href='#'
           onClick={props.onProductClick}
@@ -39,7 +39,7 @@ const CartItemDrawer = (props: CartItemDrawerProps) => {
         <div className='text-[14px]'>Validity: 15 Days</div>
         <div className='text-[14px]'>Quantiy: 1</div>
       </div>
-      <div className='flex flex-col items-end justify-between'>
+      <div className='mt-3 md:mt-0 flex flex-row-reverse md:flex-col items-end justify-between'>
         <IoTrashOutline
           onClick={() => onRemoveItem()}
           className='size-[23px] text-gray-500 cursor-pointer'

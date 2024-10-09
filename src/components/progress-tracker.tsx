@@ -46,7 +46,7 @@ const ProgressTracker = ({ currentStep }: ProgressTrackerProps) => {
     },
   ]
   return (
-    <div className='flex items-center justify-between sm:justify-center'>
+    <div className='flex items-center justify-center'>
       {steps.map((step, idx) => (
         <React.Fragment key={idx}>
           <Step
@@ -56,7 +56,7 @@ const ProgressTracker = ({ currentStep }: ProgressTrackerProps) => {
             isCompleted={currentStep > step.stepNumber}
           />
           {idx < steps.length - 1 && (
-            <div className='w-[20px] sm:w-[40px] md:w-[80px] h-[1px] sm:h-[2px] md:h-[3px]  rounded-full bg-gray-200 mx-1 sm:mx-2 md:mx-[12px]'></div>
+            <div className='w-[30px] sm:w-[40px] md:w-[80px] h-[1px] sm:h-[2px] md:h-[3px]  rounded-full bg-gray-200 mx-1 sm:mx-2 md:mx-[12px]'></div>
           )}
         </React.Fragment>
       ))}

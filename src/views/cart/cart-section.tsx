@@ -67,15 +67,18 @@ const CartSection = () => {
             </div>
           </>
         </div>
-        <div className='mt-[40px]'>
+        <div className='hidden md:block mt-[40px]'>
           <Button
             disabled={isLoading}
-            className={`w-full bg-primary text-white py-[16px] font-medium rounded-[100px] hover:shadow-[inset_0_0_0_100px_rgba(0,_0,_0,_.2)]
+            className={` w-full bg-primary text-white py-[16px] font-medium rounded-[100px] hover:shadow-[inset_0_0_0_100px_rgba(0,_0,_0,_.2)]
               disabled:cursor-wait disabled:pointer-events-none disabled:opacity-[0.6]
               `}
           >
             Proceed To Checkout
           </Button>
+        </div>
+        <div className='fixed bottom-0 left-0 w-full h-fit'>
+          fixed bottom-0 left-0 md:relative
         </div>
       </div>
     </div>

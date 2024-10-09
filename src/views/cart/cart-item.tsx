@@ -54,17 +54,17 @@ const CartItem = ({ className }: CartItemProps) => {
                 <div className='flex items-center justify-center border-[1px] border-gray-200 rounded-[100px]'>
                   <Button
                     onClick={decrement}
-                    className='w-[52px] h-[52px] flex items-center justify-center text-black hover:text-white text-[22px] rounded-l-full bg-transparent hover:bg-primary'
+                    className='w-[40px] md:w-[52px] h-[40px] md:h-[52px] flex items-center justify-center text-black hover:text-white text-[22px] rounded-l-full bg-transparent hover:bg-primary'
                   >
                     -
                   </Button>
                   <input
                     value={value}
-                    className='w-[40px] h-[52px] outline-none border-none font-bold text-[18px] text-center'
+                    className='w-[40px] h-[40px] md:h-[52px] outline-none border-none font-bold text-[18px] text-center'
                   />
                   <Button
                     onClick={increment}
-                    className='w-[52px] h-[52px] flex items-center justify-center text-black hover:text-white text-[22px] rounded-r-full bg-transparent hover:bg-primary'
+                    className='w-[40px] md:w-[52px] h-[40px] md:h-[52px] flex items-center justify-center text-black hover:text-white text-[22px] rounded-r-full bg-transparent hover:bg-primary'
                   >
                     +
                   </Button>
