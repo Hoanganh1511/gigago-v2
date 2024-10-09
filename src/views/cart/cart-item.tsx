@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
 import React, { useEffect } from 'react'
 import { IoTrashOutline } from 'react-icons/io5'
-import qs from 'query-string'
+// import qs from 'query-string'
 interface CartItemProps {
   className?: string
 }
