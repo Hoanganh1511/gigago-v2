@@ -11,8 +11,8 @@ interface CartItemProps {
   className?: string
 }
 const CartItem = ({ className }: CartItemProps) => {
-  const searchParams = useSearchParams()
-  const router = useRouter()
+  // const searchParams = useSearchParams()
+  // const router = useRouter()
   const [debouncedQuantity, value, setValue] = useDebounce(1, 500)
   const increment = () => {
     setValue(value + 1)
@@ -30,8 +30,8 @@ const CartItem = ({ className }: CartItemProps) => {
         className,
       )}
     >
-      <div className='flex flex-col md:flex-row items-stretch'>
-        <div className='flex'>
+      <div className='flex-1 flex flex-col md:flex-row items-stretch'>
+        <div className='flex flex-1'>
           <div className='flex items-start w-[48px]'>
             <Image
               src='/assets/images/vn.webp'
@@ -49,8 +49,9 @@ const CartItem = ({ className }: CartItemProps) => {
               <p className='text-[14px] text-gray-700'>Data Plan: 2GB/Day</p>
               <p className='text-[14px] text-gray-700'>Validity: 7 Days</p>
             </div>
-            <div className='flex flex-col-reverse gap-y-[20px] md:flex-row items-start'>
-              <div className='ml-0 md:ml-[170px] flex items-center justify-center'>
+            <div className='flex-1 flex flex-col-reverse gap-y-[20px] md:flex-row items-start md:items-center justify-end'>
+              {/* md:ml-[170px]  */}
+              <div className='ml-0 pl-[14px] md:pl-0 flex items-center justify-center'>
                 <div className='flex items-center justify-center border-[1px] border-gray-200 rounded-[100px]'>
                   <Button
                     onClick={decrement}
@@ -60,6 +61,7 @@ const CartItem = ({ className }: CartItemProps) => {
                   </Button>
                   <input
                     value={value}
+                    readOnly={true}
                     className='w-[40px] h-[40px] md:h-[52px] outline-none border-none font-bold text-[18px] text-center'
                   />
                   <Button
@@ -70,7 +72,8 @@ const CartItem = ({ className }: CartItemProps) => {
                   </Button>
                 </div>
               </div>
-              <div className='md:ml-[100px] flex items-center justify-end'>
+              {/* md:ml-[100px] */}
+              <div className='pl-[14px] md:pl-0 md:ml-[100px] flex items-center justify-end'>
                 <span className='text-[18px] text-primary font-semibold'>
                   $14.00
                 </span>

@@ -12,6 +12,7 @@ const OnTop = () => {
       behavior: 'smooth',
     })
   }
+
   return (
     <>
       <Link

@@ -39,7 +39,7 @@ const ViewCartNavigation = () => {
             />
           </div>
         </DrawerTrigger>
-        <DrawerContent className='h-dvh md:h-screen w-[300px] md:w-[500px] fixed top-0 right-0 px-4'>
+        <DrawerContent className='h-dvh md:h-screen w-[340px] md:w-[500px] fixed top-0 right-0 px-4'>
           <DrawerHeader className='flex items-center justify-between  md:py-[25px] border-b-[1px] border-gray-100'>
             <DrawerTitle className='text-[24px]'>My cart</DrawerTitle>
             <div

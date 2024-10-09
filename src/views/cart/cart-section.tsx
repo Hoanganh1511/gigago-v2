@@ -27,7 +27,7 @@ const CartSection = () => {
     </div>
   )
   return (
-    <div className='w-full grid grid-cols-12 md:space-x-[54px] space-y-[30px]'>
+    <div className='w-full grid grid-cols-12 md:gap-x-[54px] gap-y-[30px]'>
       <div className='col-span-12 md:col-span-8'>
         <div className='relative '>
           {isLoading && <CartLoading />}
@@ -79,8 +79,8 @@ const CartSection = () => {
         </div>
         <div className='block md:hidden fixed bottom-0 left-0 bg-white w-full h-fit px-[15px] py-[20px] border-t-[1px] border-gray-100'>
           <div className='flex justify-between items-center mb-[16px]'>
-            <span className='text-[16px] font-normal'>Total total</span>
-            <span className='text-[16px] font-normal'>$19.40</span>
+            <span className='text-[16px] font-medium'>Total total</span>
+            <span className='text-[16px] font-medium'>$19.40</span>
           </div>
           <Button
             disabled={isLoading}
