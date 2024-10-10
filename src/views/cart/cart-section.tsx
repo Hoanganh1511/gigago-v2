@@ -4,6 +4,7 @@ import CartItem from './cart-item'
 import Button from '@/components/ui/button'
 import CartLoading from './cart-loading'
 import PromotionInput from './promotion-input'
+import Link from 'next/link'
 
 const CartSection = () => {
   const [isLoading, setLoading] = useState(false)
@@ -61,14 +62,17 @@ const CartSection = () => {
           </>
         </div>
         <div className='hidden md:block mt-[40px]'>
-          <Button
-            disabled={isLoading}
-            className={` w-full bg-primary text-white py-[16px] font-medium rounded-[100px] hover:shadow-[inset_0_0_0_100px_rgba(0,_0,_0,_.2)]
+          <Link
+            href='/checkout'
+            // disabled={isLoading}
+            className={`${isLoading ? 'pointer-events-none' : ''} block text-center  w-full bg-primary text-white py-[16px] font-medium rounded-[100px] hover:shadow-[inset_0_0_0_100px_rgba(0,_0,_0,_.2)]
               disabled:cursor-wait disabled:pointer-events-none disabled:opacity-[0.6]
               `}
           >
+            {/* <Link href='/checkout' className=''> */}
             Proceed To Checkout
-          </Button>
+            {/* </Link> */}
+          </Link>
         </div>
         <div className='block md:hidden fixed bottom-0 left-0 bg-white w-full h-fit px-[15px] py-[20px] border-t-[1px] border-gray-100'>
           <div className='flex justify-between items-center mb-[16px]'>
@@ -81,7 +85,7 @@ const CartSection = () => {
               disabled:cursor-wait disabled:pointer-events-none disabled:opacity-[0.6]
               `}
           >
-            Proceed To Checkout
+            <Link href='/checkout'>Proceed To Checkout</Link>
           </Button>
         </div>
       </div>

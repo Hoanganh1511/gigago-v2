@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import CartLoading from './cart-loading'
 import OrderForm from './order-form'
-import WithLoading from '@/hoc/with-loading'
+import WithLoading from '@/components/with-loading'
 const BillItem = ({
   item,
 }: {

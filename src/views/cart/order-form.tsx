@@ -18,6 +18,8 @@ import { cn } from '@/utils/cn'
 import { Label } from '@/components/ui/label'
 import { Checkbox } from '@/components/ui/checkbox'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+import { GenericModal } from '@/components/modals/generic-modal'
+import { useModalStore } from '@/stores/use-modal-store'
 interface FormData {
   firstName: string
   lastName: string
@@ -25,8 +27,8 @@ interface FormData {
   state: string
   email: string
   reEmail: string
-  phone: string
-  address: string
+  phone?: string
+  address?: string
   payMethod: string
   confirmTerm: boolean
   confirmDevice: boolean
@@ -41,7 +43,7 @@ const defaultValues = {
   phone: '',
   address: '',
   payMethod: 'card',
-  confirmTerm: true,
+  confirmTerm: false,
   confirmDevice: false,
 }
 const schema = yup
@@ -54,8 +56,8 @@ const schema = yup
     reEmail: yup
       .string()
       .required('Confirm Email Address / is a required field'),
-    phone: yup.string().required('Email / is a required field'),
-    address: yup.string().required('Email / is a required field'),
+    phone: yup.string(),
+    address: yup.string(),
     payMethod: yup.string().required('Payment method / is a required field'),
     confirmTerm: yup
       .bool()
@@ -69,6 +71,9 @@ const schema = yup
   .required()
 
 const OrderForm = () => {
+  const modals = useModalStore((s) => s.modals)
+  const closeModal = useModalStore((s) => s.closeModal)
+  const openModal = useModalStore((s) => s.openModal)
   const [expandedCouponCode, setExpandedCouponcode] = useState(false)
   const promitionCodeInputRef = useRef<HTMLInputElement | null>(null)
   const form = useForm<FormData>({
@@ -78,6 +83,7 @@ const OrderForm = () => {
   const {
     handleSubmit,
     control,
+    setValue,
     formState: { errors },
   } = form
   const onSubmit = handleSubmit((data) => {
@@ -107,11 +113,40 @@ const OrderForm = () => {
   })
   return (
     <>
+      <GenericModal
+        title='Device Compatibility'
+        open={!!modals['device-compatibility']}
+        onOpenChange={() => closeModal('device-compatibility')}
+        className='w-[800px]'
+      >
+        <div className='pt-[50px]'>
+          <p className='font-semibold mb-3'>
+            The following devices support eSIM:
+          </p>
+          <p>
+            To use an eSIM, your mobile device must be carrier-unlocked and
+            eSIM-compatible. Read on the list below to see if your device
+            supports eSIM. (Note that restrictions may apply to specific
+            countries and carriers)*.
+          </p>
+        </div>
+        <div className='flex justify-center items-center mt-4'>
+          <Button
+            onClick={() => {
+              setValue('confirmDevice', true)
+              closeModal('device-compatibility')
+            }}
+            className='text-white bg-primary rounded-[10px] px-[20px]'
+          >
+            READ AND ACCEPT
+          </Button>
+        </div>
+      </GenericModal>
       <div className='mb-[15px]'>
         Have a coupon?{' '}
-        <Link href='' onClick={handleExpand} className='text-primary'>
+        <button onClick={handleExpand} className='text-primary'>
           Click here to enter your code
-        </Link>
+        </button>
       </div>
       <div
         className={` ${expandedCouponCode ? 'h-[110px] opacity-100' : 'h-0 opacity-0'}  overflow-hidden duration-300`}
@@ -517,13 +552,15 @@ const OrderForm = () => {
                           className='flex items-center gap-[12px] font-normal text-normal '
                         >
                           <Checkbox
-                            className={`mt-[2px] ${errors.confirmDevice ? 'outline outline-[1px] outline-red-500 outline-offset-[2px]' : ''}`}
+                            className={`mt-[2px] ${errors.confirmTerm ? 'outline outline-[1px] outline-red-500 outline-offset-[2px]' : ''}`}
                             onCheckedChange={(checked) => {
                               field.onChange(checked)
                             }}
                             checked={field.value}
                           />
-                          <p className='leading-[24px]'>
+                          <p
+                            className={`leading-[24px] ${errors.confirmDevice ? 'text-error' : ''}`}
+                          >
                             I have read and agree to the website{' '}
                             <Link href='#' className='text-secondary'>
                               term and conditions
@@ -551,11 +588,17 @@ const OrderForm = () => {
                           <Checkbox
                             className={`mt-[2px] ${errors.confirmDevice ? 'outline outline-[1px] outline-red-500 outline-offset-[2px]' : ''}`}
                             onCheckedChange={(checked) => {
-                              field.onChange(checked)
+                              if (checked) {
+                                openModal('device-compatibility')
+                              } else {
+                                field.onChange(false)
+                              }
                             }}
                             checked={field.value}
                           />
-                          <p className='leading-[24px]'>
+                          <p
+                            className={`leading-[24px] ${errors.confirmDevice ? 'text-error' : ''}`}
+                          >
                             Before completing this order, please confirm your
                             device is eSIM compatible and network-unlocked. *
                           </p>

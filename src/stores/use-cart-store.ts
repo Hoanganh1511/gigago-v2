@@ -1,24 +1,31 @@
 import { create } from 'zustand'
 interface Product {}
-interface State {
+interface CartStore {
   cart: Product[]
   totalItems: number
   totalPrice: number
+  isOpen?: boolean
+  isSheetLoaded?: boolean
+
+  openCart?: () => void
+  closeCart?: () => void
+  preloadSheet?: () => void
+  refresh?: () => void
+  setCart?: () => void
 }
-// Item?: Product
-// Item?: Product
+
 interface Actions {
   addToCart: () => void
   removeFromCart: () => void
 }
 
-const INITIAL_STATE: State = {
+const INITIAL_STATE: CartStore = {
   cart: [],
   totalItems: 0,
   totalPrice: 0,
 }
 
-export const useCartStore = create<State & Actions>(() => ({
+export const useCartStore = create<CartStore & Actions>(() => ({
   cart: INITIAL_STATE.cart,
   totalItems: INITIAL_STATE.totalItems,
   totalPrice: INITIAL_STATE.totalPrice,

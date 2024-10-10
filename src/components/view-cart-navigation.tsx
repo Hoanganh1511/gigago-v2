@@ -56,7 +56,7 @@ const ViewCartNavigation = () => {
           </div>
           <DrawerFooter>
             <div className='flex flex-col gap-y-[16px] py-4'>
-              <Link href='/cart' onClick={onCartClose}>
+              <Link href='/cart' scroll={true} onClick={onCartClose}>
                 <Button className='w-full bg-gray-100 text-primary hover:text-white hover:bg-primary duration-300 rounded-[25px]'>
                   {' '}
                   View Cart
