@@ -36,6 +36,7 @@ const config: Config = {
         border: '#F5F5F8',
         white: '#ffffff',
         black02: '#404963',
+        error: '#b20000',
       },
       borderRadius: {
         sm: '4px',
@@ -44,6 +45,10 @@ const config: Config = {
         xl: '16px',
       },
       keyframes: {
+        'input-auto-focus': {
+          from: { borderColor: '#b20000' },
+          to: { borderColor: '#4600B9' },
+        },
         'accordion-down': {
           from: { height: '0' },
           to: { height: 'var(--radix-accordion-content-height)' },
@@ -88,6 +93,7 @@ const config: Config = {
         },
       },
       animation: {
+        'input-auto-focus': 'input-auto-focus 0.4s linear',
         'zoom-in': 'zoom-in 0.6s ease-in-out',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',

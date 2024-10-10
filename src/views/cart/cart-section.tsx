@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import CartItem from './cart-item'
 import Button from '@/components/ui/button'
 import CartLoading from './cart-loading'
+import PromotionInput from './promotion-input'
 
 const CartSection = () => {
   const [isLoading, setLoading] = useState(false)
@@ -47,15 +48,7 @@ const CartSection = () => {
           {isLoading && <CartLoading />}
           <>
             <h5 className='text-[18px] font-semibold mb-[24px]'>Cart totals</h5>
-            <div className='relative'>
-              <input
-                className='w-full h-[48px] pl-[14px] pr-[80px] placeholder:text-black/65 bg-white rounded-[16px] outline-none focus:outline focus:outline-[2px] focus:outline-gray-400 focus:duration-200'
-                placeholder='Promotion code (optional)'
-              />
-              <div className='absolute top-1/2 right-[12px] -translate-y-1/2 text-primary'>
-                Apply
-              </div>
-            </div>
+            <PromotionInput />
             <hr className='mt-[24px] mb-[12px]' />
             <div className='flex justify-between items-center mb-[16px]'>
               <span className='text-[14px]'>Sub total</span>
